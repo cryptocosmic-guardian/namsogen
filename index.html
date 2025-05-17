@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Bidvertiser2099854 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -17,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./iconapp.png" />
     <meta property="og:image" content="https://namsogen.top/iconapp.png">
     <meta property="og:url" content="https://namsogen.top/index.html">
-
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
     <!-- Additional SEO Tags -->
     <link rel="canonical" href="https://namsogen.top/index.html">
@@ -31,6 +30,13 @@
       fa.rel = 'stylesheet';
       fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
       document.head.appendChild(fa);
+
+      function scrollToBinLookup() {
+          const binLookupSection = document.querySelector('.bin-lookup-section');
+          if (binLookupSection) {
+              binLookupSection.scrollIntoView({ behavior: 'smooth' });
+          }
+      }
     </script>
     <script
       async
@@ -246,6 +252,29 @@
         });
     </script>
     <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+    <script src="js/bin-lookup.js"></script>
+    <style>
+        .result-item {
+            background: var(--card-color);
+            padding: 12px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        .result-item strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+        }
+        .result-item strong i {
+            margin-right: 8px;
+        }
+        .result-item span {
+            color: var(--dark-color);
+        }
+        .lookup-form .form-group {
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -348,6 +377,12 @@
                                 <i class="fas fa-cogs"></i> Generate
                             </button>
                         </div>
+                        <div class="bin-check-info" style="text-align: center; margin-top: 15px; padding: 10px; background: rgba(52, 152, 219, 0.1); border-radius: 8px;">
+                            <p style="margin-bottom: 10px; color: var(--primary-color);"><i class="fas fa-info-circle"></i> Did you know? We have a BIN lookup tool!</p>
+                            <button onclick="scrollToBinLookup()" class="action-button secondary" style="font-size: 0.9em;">
+                                <i class="fas fa-search"></i> BIN Lookup
+                            </button>
+                        </div>
                     </div>
                     <div>
                         <script type="text/javascript">
@@ -381,6 +416,58 @@
                 </div>
             </div>
             
+            <section class="bin-lookup-section card namso-card" style="margin:32px auto;max-width:800px;">
+                <div class="card-content">
+                    <h3 class="section-title" style="color:var(--primary-color);margin-bottom:20px;display:flex;align-items:center;gap:10px;">
+                        <i class="fas fa-search"></i> BIN Lookup
+                    </h3>
+                    <form id="bin-lookup-form" method="POST" action="php/bin.php" class="lookup-form" style="display:flex;flex-direction:column;gap:16px;margin-bottom:24px;">
+                        <div class="form-group" style="position:relative;">
+                            <input type="text" id="bin-lookup-input" name="bin" maxlength="8" minlength="6" pattern="\d{6,8}" placeholder=" " required class="form-control">
+                            <label for="bin-lookup-input">Enter BIN (6-8 digits)</label>
+                        </div>
+                        <div class="g-recaptcha" data-sitekey="6Lf4WD4rAAAAAIEIER6R2L06plDYAKxbwk0x3MFO" style="margin:0 auto;"></div>
+                        <button type="submit" class="action-button generator-btn" style="margin-top:8px;">
+                            <i class="fas fa-search"></i> Lookup BIN
+                        </button>
+                    </form>
+                    <div id="bin-lookup-result" class="lookup-result" style="display:none;background:var(--light-color);border-radius:var(--border-radius);padding:20px;">
+                        <div class="result-header" style="margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--primary-color);display:flex;align-items:center;justify-content:space-between;">
+                            <h4 style="color:var(--primary-color);margin:0;display:flex;align-items:center;gap:8px;">
+                                <i class="fas fa-credit-card"></i>
+                                <span class="bin-number">BIN: </span>
+                            </h4>
+                            <span class="bin-type" style="background:var(--primary-color);color:white;padding:4px 12px;border-radius:20px;font-size:0.9em;"></span>
+                        </div>
+                        <div class="result-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:16px;">
+                            <div class="result-item">
+                                <strong><i class="fas fa-university"></i> Bank:</strong>
+                                <span class="bank-name"></span>
+                            </div>
+                            <div class="result-item">
+                                <strong><i class="fas fa-tag"></i> Brand:</strong>
+                                <span class="vendor-name"></span>
+                            </div>
+                            <div class="result-item">
+                                <strong><i class="fas fa-star"></i> Level:</strong>
+                                <span class="card-level"></span>
+                            </div>
+                            <div class="result-item">
+                                <strong><i class="fas fa-globe-americas"></i> Country:</strong>
+                                <span class="country-name"></span>
+                            </div>
+                            <div class="result-item">
+                                <strong><i class="fas fa-phone"></i> Phone:</strong>
+                                <span class="phone-number"></span>
+                            </div>
+                            <div class="result-item">
+                                <strong><i class="fas fa-link"></i> Website:</strong>
+                                <span class="website-url"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <!-- Namso Gen Detailed Article -->
             <div class="namso-gen-article aso-article">
                 <h2><i class="fas fa-credit-card"></i> Namso Gen: The Ultimate Tool for Secure Credit Card Testing</h2>
