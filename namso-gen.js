@@ -82,13 +82,30 @@ function generate() {
   }
 
   let cards = [];
+  const includeDate = document.getElementById("include-date").checked;
+  const includeCVV = document.getElementById("include-cvv").checked;
   for (let i = 0; i < count; i++) {
     const generatedCard = generateCard(bin, cardLength);
-    const generatedMonth = month === "Random" ? generateMonth() : month;
-    const generatedYear = year === "Random" ? generateYear() : year;
-    const generatedCCV = ccv || generateCCV(bin);
+    let dateStr = "";
+    let cvvStr = "";
+    let result = generatedCard;
+    let parts = [];
 
-    cards.push(`${generatedCard}|${generatedMonth}|${generatedYear}|${generatedCCV}`);
+    if (includeDate) {
+      const generatedMonth = month === "Random" ? generateMonth() : month;
+      const generatedYear = year === "Random" ? generateYear() : year;
+      parts.push(generatedMonth + "|" + generatedYear);
+    }
+
+    if (includeCVV) {
+      cvvStr = ccv || generateCCV(bin);
+      parts.push(cvvStr);
+    }
+
+    if (parts.length > 0) {
+      result += "|" + parts.join("|");
+    }
+    cards.push(result);
   }
 
   output.value = cards.join('\n');

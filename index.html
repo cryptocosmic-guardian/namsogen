@@ -19,7 +19,7 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     
     <!-- Additional SEO Tags -->
-    <link rel="canonical" href="https://namsogen.top/index.html">
+    <link rel="canonical" href="https://namsogen.top/">
     <meta name="robots" content="index, follow">
     
     <!-- Existing Head Content -->
@@ -255,21 +255,25 @@
     <script src="js/bin-lookup.js"></script>
     <style>
         .result-item {
-            background: var(--card-color);
-            padding: 12px;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+            background: #ffffff;
+            padding: 16px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(52, 152, 219, 0.2);
         }
         .result-item strong {
             display: block;
-            color: var(--primary-color);
-            margin-bottom: 6px;
+            color: #2980b9;
+            margin-bottom: 8px;
+            font-size: 1.1em;
         }
         .result-item strong i {
-            margin-right: 8px;
+            margin-right: 10px;
+            color: #3498db;
         }
         .result-item span {
-            color: var(--dark-color);
+            color: #2c3e50;
+            font-size: 1.05em;
         }
         .lookup-form .form-group {
             margin-bottom: 0;
@@ -372,6 +376,20 @@
                                 <label for="count">Quantity</label>
                             </div>
                         </div>
+                        <div class="form-row" style="margin-top: 10px;">
+
+                        
+                            <div class="checkbox-wrapper" style="display: flex; gap: 20px; align-items: center; justify-content: center; margin: 10px 0;">
+                                <div class="custom-checkbox" style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="include-date" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-color); transition: all 0.3s ease;">
+                                    <label for="include-date" style="color: var(--dark-color); font-weight: 500; cursor: pointer;">DATE</label>
+                                </div>
+                                <div class="custom-checkbox" style="display: flex; align-items: center; gap: 8px;">
+                                    <input type="checkbox" id="include-cvv" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--primary-color); transition: all 0.3s ease;">
+                                    <label for="include-cvv" style="color: var(--dark-color); font-weight: 500; cursor: pointer;">CVV</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-row action-row">
                             <button onclick="generate()" class="action-button generator-btn">
                                 <i class="fas fa-cogs"></i> Generate
@@ -470,33 +488,113 @@
             </section>
             <!-- Namso Gen Detailed Article -->
             <div class="namso-gen-article aso-article">
-                <h2><i class="fas fa-credit-card"></i> Namso Gen: The Ultimate Tool for Secure Credit Card Testing</h2>
-                <p>In today's digital landscape, ensuring the security and functionality of payment systems is paramount. Developers, security professionals, and testers require reliable tools to simulate real-world payment scenarios without compromising sensitive data. Namso Gen, also known as Namso CCGen, stands out as a premier solution for generating valid-looking credit card numbers for testing and development purposes.</p>
+                <h2><i class="fas fa-credit-card"></i> NamsoGen: Comprehensive Guide to Credit Card Number Generation, Luhn Algorithm, and Ethical Use</h2>
+                <article>
+                  <section>
+                    <h3>Introduction</h3>
+                    <p>
+                      NamsoGen is a powerful and user-friendly tool designed for developers, testers, and QA professionals who need to generate valid credit card numbers for testing payment systems, e-commerce platforms, and financial applications. This guide will walk you through how to use NamsoGen effectively, explain the underlying Luhn algorithm, and discuss the ethical considerations and best practices for using such tools responsibly.
+                    </p>
+                  </section>
+                  <section>
+                    <h3>How to Use NamsoGen</h3>
+                    <ol>
+                      <li>
+                        <strong>Access the Tool:</strong> Open NamsoGen in your browser. The interface is intuitive and mobile-friendly, ensuring accessibility across devices.
+                      </li>
+                      <li>
+                        <strong>Enter BIN (Bank Identification Number):</strong> Input the first 6-8 digits of the card number, known as the BIN. This determines the card issuer (Visa, MasterCard, Amex, etc.) and country of origin. You can use real BINs for testing, but ensure you do not use actual customer data.
+                      </li>
+                      <li>
+                        <strong>Customize Card Details:</strong> Set parameters such as the number of cards to generate, card length, expiration date, CVV, and other optional fields. These options help simulate real-world scenarios for robust testing.
+                      </li>
+                      <li>
+                        <strong>Generate Numbers:</strong> Click the "Generate" button. NamsoGen will instantly produce a list of valid credit card numbers that pass the Luhn check. These numbers are for testing only and cannot be used for real transactions.
+                      </li>
+                      <li>
+                        <strong>Copy or Download:</strong> Easily copy the generated numbers to your clipboard or download them as a file for integration into your test scripts or QA processes.
+                      </li>
+                      <li>
+                        <strong>Advanced Features:</strong> Use additional features such as bulk generation, custom formatting, and API integration (if available) to streamline your workflow.
+                      </li>
+                    </ol>
+                  </section>
+                  <section>
+                    <h3>Understanding the Luhn Algorithm</h3>
+                    <p>
+                      The Luhn algorithm, also known as the "modulus 10" or "mod 10" algorithm, is a simple checksum formula used to validate a variety of identification numbers, most notably credit card numbers. Developed by IBM scientist Hans Peter Luhn in 1954, it is widely adopted by financial institutions to detect accidental errors in card numbers.
+                    </p>
+                    <h4>How the Luhn Algorithm Works</h4>
+                    <ol>
+                      <li>Starting from the rightmost digit (the check digit), move left and double the value of every second digit. If doubling results in a number greater than 9, subtract 9 from it.</li>
+                      <li>Sum all the digits (both the doubled and untouched ones).</li>
+                      <li>If the total sum is a multiple of 10 (i.e., ends in zero), the number is considered valid according to the Luhn formula.</li>
+                    </ol>
+                    <p>
+                      <strong>Example:</strong> For the card number 4539 1488 0343 6467:
+                      <ul>
+                        <li>Double every second digit from the right: 4, 5, 3, 9, 1, 4, 8, 8, 0, 3, 4, 3, 6, 4, 6, 7 → 8, 5, 6, 9, 2, 4, 16, 8, 0, 3, 8, 3, 12, 4, 12, 7</li>
+                        <li>Adjust values over 9: 8, 5, 6, 9, 2, 4, 7, 8, 0, 3, 8, 3, 3, 4, 3, 7</li>
+                        <li>Sum: 8+5+6+9+2+4+7+8+0+3+8+3+3+4+3+7 = 80</li>
+                        <li>Since 80 is a multiple of 10, the card number is valid.</li>
+                      </ul>
+                    </p>
+                    <p>
+                      The Luhn algorithm is not a security feature; it simply helps catch data entry errors and ensures the structural validity of card numbers.
+                    </p>
+                  </section>
+                  <section>
+                    <h3>Ethical Considerations and Responsible Use</h3>
+                    <p>
+                      While NamsoGen and similar tools are invaluable for testing and development, it is crucial to use them ethically and legally. Here are some best practices and ethical guidelines:
+                    </p>
+                    <ul>
+                      <li><strong>Testing Only:</strong> Generated card numbers must be used exclusively for testing payment gateways, fraud detection systems, and e-commerce platforms. Never attempt to use them for real transactions or fraudulent activities.</li>
+                      <li><strong>Respect Privacy:</strong> Do not use real customer data or attempt to generate numbers that could correspond to actual accounts. Always use fictional or anonymized data in your tests.</li>
+                      <li><strong>Compliance:</strong> Ensure your testing practices comply with relevant laws, regulations, and organizational policies, such as PCI DSS for payment data security.</li>
+                      <li><strong>Transparency:</strong> Inform stakeholders and team members about the use of generated data in testing environments to avoid confusion or accidental misuse.</li>
+                      <li><strong>Security:</strong> Never store or share generated card numbers outside secure, controlled environments. Treat all test data with the same care as production data.</li>
+                      <li><strong>Educational Purpose:</strong> Use the tool to educate teams about card validation, fraud prevention, and secure coding practices.</li>
+                    </ul>
+                  </section>
+                  <section>
+                    <h3>Conclusion</h3>
+                    <p>
+                      NamsoGen empowers developers and testers to create robust, reliable payment systems by providing instant access to valid, Luhn-compliant credit card numbers for testing. By understanding the Luhn algorithm and adhering to ethical guidelines, you can ensure your testing is effective, secure, and responsible. Always remember: with great power comes great responsibility—use NamsoGen wisely and ethically.
+                    </p>
+                  </section>
+                </article>
+                <p>Namso Gen is an essential tool for developers and testers who need to validate payment systems securely and efficiently. This comprehensive guide will explain how to utilize each feature of the tool to maximize your testing capabilities.</p>
 
-                <h3>🔍 What is Namso Gen?</h3>
-                <p>Namso Gen is a free, online credit card number generator designed specifically for testing and development. Utilizing the industry-standard Luhn algorithm (MOD 10), Namso Gen produces credit card numbers that adhere to the structural integrity of real cards, including the Bank Identification Number (BIN), expiration date (MM/YYYY), and Card Verification Value (CVV). These generated numbers are ideal for validating payment systems, ensuring compliance, and conducting security assessments.</p>
-
-                <h3>⚙️ Key Features of Namso Gen</h3>
+                <h3>🔍 How to Use Namso Gen</h3>
+                <p>To start using Namso Gen, follow these simple steps:</p>
                 <ul>
-                    <li><strong>BIN-Based Generation:</strong> Input a valid 6-8 digit BIN to generate credit card numbers associated with specific banks or financial institutions.</li>
-                    <li><strong>Multiple Card Types Supported:</strong> Generate numbers for various card brands, including Visa, MasterCard, American Express, and more.</li>
-                    <li><strong>Customizable Parameters:</strong> Specify the number of cards to generate, along with optional expiration dates and CVV codes.</li>
-                    <li><strong>Luhn Algorithm Validation:</strong> Ensure that all generated numbers pass standard verification checks, maintaining structural validity.</li>
+                    <li><strong>Enter BIN:</strong> Type the first 6-8 digits of the BIN in the corresponding field. Use 'x' for random digits (example: 411111xxxxxxxxxx).</li>
+                    <li><strong>Select Date:</strong> Choose the expiration month and year from the dropdowns or leave as "Random" for random values.</li>
+                    <li><strong>Set CVV:</strong> Enter a specific CVV or leave blank for random generation.</li>
+                    <li><strong>Quantity:</strong> Specify how many numbers you need to generate (maximum 100 at a time).</li>
                 </ul>
 
-                <h3>🧪 Common Use Cases</h3>
-                <p>Namso Gen is primarily used in the following scenarios:</p>
+                <h3>📱 Exclusive App Features</h3>
+                <p>Download our Android app to access additional features:</p>
                 <ul>
-                    <li><strong>Payment System Testing:</strong> Validate the functionality of payment gateways and e-commerce platforms by simulating real-world transactions.</li>
-                    <li><strong>Security Assessments:</strong> Conduct penetration testing and vulnerability assessments without exposing real cardholder data.</li>
-                    <li><strong>Compliance Verification:</strong> Ensure that systems adhere to industry standards and regulations by testing with valid-looking card numbers.</li>
-                    <li><strong>Educational Purposes:</strong> Teach students and professionals about payment systems, encryption methods, and fraud prevention techniques.</li>
+                    <li><strong>Offline Mode:</strong> Generate card numbers even without an internet connection.</li>
+                    <li><strong>Integrated BIN Checker:</strong> Verify BIN details directly within the app.</li>
+                    <li><strong>Optimized Interface:</strong> Enhanced mobile experience for use anywhere.</li>
+                    <li><strong>Regular Updates:</strong> Access to new features and constant improvements.</li>
                 </ul>
 
-                <h3>⚠️ Legal and Ethical Considerations</h3>
-                <p>It's crucial to understand that while Namso Gen generates structurally valid credit card numbers, these numbers are not linked to actual bank accounts and cannot be used for real transactions. Using these generated numbers for fraudulent activities is illegal and unethical. Namso Gen is intended solely for legitimate testing and development purposes.</p>
+                <h3>⚠️ Responsible Usage</h3>
+                <p>Namso Gen was developed exclusively for testing and development purposes. The generated numbers are structurally valid but are NOT linked to real accounts and CANNOT be used for real transactions. Using this tool for fraudulent activities is strictly prohibited and illegal.</p>
+
+                <h3>💡 Usage Tips</h3>
+                <ul>
+                    <li><strong>Gateway Testing:</strong> Use specific BINs to test different card brands.</li>
+                    <li><strong>Form Validation:</strong> Generate multiple numbers to test input validations.</li>
+                    <li><strong>Integration Testing:</strong> Verify compatibility with different payment processors.</li>
+                    <li><strong>Documentation:</strong> Keep records of used BINs for future reference.</li>
+                </ul>
             </div>
-
             <!-- Download Complete App Section -->
             <div class="download-complete-app-section">
                 <div class="download-app-header">
